@@ -46,6 +46,13 @@ body {
   padding: 14px 0;
   gap: 16px;
 }
+/* ---- Sticky Navbar Visual Change (on scroll) ---- */
+.site-header.is-scrolled {
+  width: calc(100% - 24px);
+  margin: 12px auto 0 auto;
+  border-radius: 18px;
+  padding: 2px 0;
+}
 .logo {
   color: var(--color-text-light);
   text-decoration: none;
