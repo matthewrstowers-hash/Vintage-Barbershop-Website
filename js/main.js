@@ -12,6 +12,7 @@ const phoneLink = document.getElementById("phoneLink");
 const heading = document.getElementById("heroHeading");
 const featureGrid = document.getElementById("featureGrid");
 const nav = document.getElementById("nav");
+const siteHeader = document.querySelector(".site-header");
 // ----- Dervices Data (Array of Objects) -----
 const services = [
   {
@@ -67,6 +68,15 @@ const updateHeadingText = (newText) => {
   if (!heading) return;
   heading.textContent = newText;
 };
+// Makes navbar stick on scroll (Sticky Navbar)
+const handleHeaderOnScroll = () => {
+  if (!siteHeader) return;
+  if (window.scrollY > 10) {
+    siteHeader.classList.add("is-scrolled");
+  } else {
+    siteHeader.classList.remove("is-scrolled");
+  };
+}
 // ----- Event Listeners -----
 // 1) Set year on page load
 setCurrentYear();
@@ -105,6 +115,13 @@ if (callBtn) {
     } else {
       updateHeadingText("Call feature coming lext!");
     }
+  });
+}
+// 6) Rounds corners of nabar on scroll
+window.addEventListener("scroll", handleHeaderOnScroll);
+if (callBtn) {
+  callBtn.addEventListener("click", () => {
+    window.location.href = `tel:${shopInfo.phoneRaw}`;
   });
 }
 // ----- Render Features using forEach() -----
@@ -164,6 +181,7 @@ const renderNavigation = () => {
     mobileMenu.innerHTML = mobileHTML;
   }
 };
+
 // create array
 // array.map()
 // return HTML
@@ -178,3 +196,4 @@ const renderNavigation = () => {
 // renderFeatures();
 renderFeaturesMap();
 renderNavigation();
+handleHeaderOnScroll();
